@@ -23,7 +23,7 @@ router.post("/register", async (req, res) => {
       phoneNo: req.body.phoneNo,
     });
 
-    await newuser.save();
+    newuser.save().then(result).catch(err=> {throw new Error("mongo error");});
 
     res.send("User registered successfully");
   } catch (error) {
