@@ -65,7 +65,7 @@ router.post("/login", async (req, res) => {
       return res.status(400).json({ message: "Password Incorrect" });
     } else {
       res.send(user);
-      // res.redirect("/");
+      res.redirect("/");
     }
     // Add your logic for a successful login
   } catch (error) {
