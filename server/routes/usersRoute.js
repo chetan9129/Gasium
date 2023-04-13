@@ -61,8 +61,10 @@ router.post("/login", async (req, res) => {
   // }
   const email = req.body.email;
   const password = req.body.password;
+  console.log(req.body);
   try {
     const user = await User.findOne({ email: email });
+    console.log(user);
     if (!user) {
       console.log("logged in failed");
       return res.status(400).json({ message: "User not found" });
@@ -73,8 +75,10 @@ router.post("/login", async (req, res) => {
       return res.status(400).json({ message: "Password Incorrect" });
     } else {
       res.send(user);
-      res.redirect("/");
+      // res.redirect("/");
     }
+
+    console.log(isPasswordCorrect);
     // Add your logic for a successful login
   } catch (error) {
     console.log(error);

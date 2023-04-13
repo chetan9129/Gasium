@@ -1,8 +1,11 @@
 const express = require("express");
 const dotenv = require("dotenv");
-
 const cors = require("cors");
 const app = express();
+
+const bodyParser = require("body-parser");
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 dotenv.config({ path: "./config.env" });
 app.use(cors());
@@ -12,7 +15,7 @@ const gasesRoute = require("./routes/gasesRoute");
 const usersRoute = require("./routes/usersRoute");
 const bookingRoute = require("./routes/bookingRoute");
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+// app.use(express.urlencoded({ extended: true }));
 console.log(process.env.MONGOURL);
 app.use("/api/gases", gasesRoute);
 app.use("/api/gas", gasesRoute);
