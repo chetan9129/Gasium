@@ -11,8 +11,8 @@ router.post("/register", async (req, res) => {
   // var bcrypt = require("bcryptjs");
   // Store hash in your password DB.
   try {
-    // const salt = await bcrypt.genSalt(10);
-    // const hashed = await bcrypt.hash(req.body.password, 10);
+    const salt = await bcrypt.genSalt(10);
+    const hashed = await bcrypt.hash(req.body.password, salt);
 
     const newuser = new User({
       name: req.body.name,
@@ -24,12 +24,13 @@ router.post("/register", async (req, res) => {
     });
     console.log(req.body);
 
-    newuser
-      .save()
-      .then()
-      .catch((err) => {
-        throw new Error("mongo error");
-      });
+    // newuser
+    //   .save()
+    //   .then()
+    //   .catch((err) => {
+    //     throw new Error("mongo error");
+    //   });
+    await newuser.save();
 
     res.send("User registered successfully");
   } catch (error) {
