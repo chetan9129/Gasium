@@ -26,7 +26,7 @@ router.post("/register", async (req, res) => {
 
     newuser
       .save()
-      .then(result)
+      .then()
       .catch((err) => {
         throw new Error("mongo error");
       });
