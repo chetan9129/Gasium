@@ -23,14 +23,17 @@ router.post("/register", async (req, res) => {
       phoneNo: req.body.phoneNo,
     });
 
-    newuser.save().then(result).catch(err=> {throw new Error("mongo error");});
+    newuser
+      .save()
+      .then(result)
+      .catch((err) => {
+        throw new Error("mongo error");
+      });
 
     res.send("User registered successfully");
   } catch (error) {
     console.log(error);
-    return res
-      .status(500)
-      .json({ message: "Error occurred while registering user" });
+    return res.status(500).json({ message: error.message });
   }
 
   // bcrypt.hash(req.body.password, saltRounds, function (err, has) {
