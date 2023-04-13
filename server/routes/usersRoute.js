@@ -10,24 +10,27 @@ const saltRounds = 10;
 router.post("/register", async (req, res) => {
   var bcrypt = require("bcryptjs");
   // Store hash in your password DB.
-  const salt = await bcrypt.genSalt(10);
-  const hashed = await bcrypt.hash(req.body.password, salt);
-
-  const newuser = new User({
-    name: req.body.name,
-    email: req.body.email,
-    password: hashed,
-    address: req.body.address,
-    pincode: req.body.pincode,
-    phoneNo: req.body.phoneNo,
-  });
-  console.log(newuser);
   try {
-    newuser.save();
-    res.send("User registeres Successfully");
+    const salt = await bcrypt.genSalt(10);
+    const hashed = await bcrypt.hash(req.body.password, salt);
+
+    const newuser = new User({
+      name: req.body.name,
+      email: req.body.email,
+      password: hashed,
+      address: req.body.address,
+      pincode: req.body.pincode,
+      phoneNo: req.body.phoneNo,
+    });
+
+    await newuser.save();
+
+    res.send("User registered successfully");
   } catch (error) {
     console.log(error);
-    return res.status(400).json({ message: "Error Occured" });
+    return res
+      .status(500)
+      .json({ message: "Error occurred while registering user" });
   }
 
   // bcrypt.hash(req.body.password, saltRounds, function (err, has) {
