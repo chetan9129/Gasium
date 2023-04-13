@@ -14,7 +14,9 @@ function GasTypeBooking() {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const { data } = await axios.get(`/api/gases/getAllGases`);
+        const { data } = await axios.get(
+          `https://gasium-api.vercel.app/api/gases/getAllGases`
+        );
         setGases(data);
         setLoading(false);
         console.log(data);

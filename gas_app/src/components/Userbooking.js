@@ -16,7 +16,9 @@ function Userbooking() {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const book = await axios.get("/api/bookings/getAllBooking");
+        const book = await axios.get(
+          "https://gasium-api.vercel.app/api/bookings/getAllBooking"
+        );
         const response = book.data;
         setBookings(response);
         console.log(response);

@@ -41,10 +41,13 @@ function BookingScreen() {
       try {
         setLoading(true);
         const data = (
-          await axios.post(`/api/gases/getgasbyid`, {
-            gasid: gasid,
-            // bookedDate: selectedDate,
-          })
+          await axios.post(
+            `https://gasium-api.vercel.app/api/gases/getgasbyid`,
+            {
+              gasid: gasid,
+              // bookedDate: selectedDate,
+            }
+          )
         ).data;
 
         setGases(data);
@@ -71,7 +74,10 @@ function BookingScreen() {
       totalAmount,
     };
     try {
-      const result = await axios.post("/api/bookings/bookgas", bookingDetails);
+      const result = await axios.post(
+        "https://gasium-api.vercel.app/api/bookings/bookgas",
+        bookingDetails
+      );
       Swal.fire({
         title: "Congrats",
         text: "Your Cylinder has been Booked",

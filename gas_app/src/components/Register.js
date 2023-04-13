@@ -45,7 +45,10 @@ function Register() {
             "Password must contain at least 8 characters including uppercase, lowercase, numbers, and special characters"
           );
         } else {
-          const result = await axios.post("/api/users/register", user).data;
+          const result = await axios.post(
+            "https://gasium-api.vercel.app/api/users/register",
+            user
+          ).data;
           difftoast("Registered Successfully");
         }
         // setSuccess(true);

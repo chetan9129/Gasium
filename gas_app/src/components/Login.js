@@ -25,7 +25,7 @@ function Login() {
     };
     try {
       const result = await axios.post(
-        "/api/users/login",
+        "https://gasium-api.vercel.app/api/users/login",
         user
       );
       localStorage.setItem("currentUser", JSON.stringify(result.data));

@@ -13,7 +13,9 @@ function AllUser() {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const datas = await axios.get("/api/users/getAllUsers");
+        const datas = await axios.get(
+          "https://gasium-api.vercel.app/api/users/getAllUsers"
+        );
         const response = datas.data;
         setUsers(response);
         console.log(response);

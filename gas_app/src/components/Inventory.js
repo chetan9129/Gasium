@@ -13,7 +13,9 @@ function Inventory() {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const { data } = await axios.get(`/api/gas/getAllGasAdmin`);
+        const { data } = await axios.get(
+          `https://gasium-api.vercel.app/api/gas/getAllGasAdmin`
+        );
         setGases(data);
         setLoading(false);
         console.log(data);
