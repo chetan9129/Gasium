@@ -47,10 +47,13 @@ function MyBooking() {
   async function cancelBooking(bookingid, gasid) {
     try {
       setLoading(true);
-      const result = await axios.post("/api/bookings/cancelBooking", {
-        bookingid,
-        gasid,
-      }).data;
+      const result = await axios.post(
+        "https://gasium-api.vercel.app/api/bookings/cancelBooking",
+        {
+          bookingid,
+          gasid,
+        }
+      ).data;
       console.log(result);
       setLoading(false);
       Swal.fire({
