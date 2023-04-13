@@ -1,23 +1,23 @@
 const express = require("express");
 const User = require("../models/user");
 const router = express.Router();
-const bcrypt = require("bcryptjs");
-const saltRounds = 10;
+// const bcrypt = require("bcryptjs");
+// const saltRounds = 10;
 // router.get("/home", (req, res) => {
 //   res.render("/home");
 // });
 
 router.post("/register", async (req, res) => {
-  var bcrypt = require("bcryptjs");
+  // var bcrypt = require("bcryptjs");
   // Store hash in your password DB.
   try {
     // const salt = await bcrypt.genSalt(10);
-    const hashed = await bcrypt.hash(req.body.password, 10);
+    // const hashed = await bcrypt.hash(req.body.password, 10);
 
     const newuser = new User({
       name: req.body.name,
       email: req.body.email,
-      password: hashed,
+      password: req.body.password,
       address: req.body.address,
       pincode: req.body.pincode,
       phoneNo: req.body.phoneNo,
