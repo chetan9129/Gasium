@@ -22,6 +22,7 @@ router.post("/register", async (req, res) => {
       pincode: req.body.pincode,
       phoneNo: req.body.phoneNo,
     });
+    console.log(req.body);
 
     newuser
       .save()
